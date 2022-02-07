@@ -1,21 +1,26 @@
 import * as React from 'react';
-import { Icon } from '@celeste-ui/atlas/primitives/Icon';
 import { styled } from 'hrg-ooo/stitches.config';
+import { Icon } from '@celeste-ui/atlas/primitives/Icon';
 
-type TProps = React.ComponentProps<typeof Anchor>;
+type TProps = React.ComponentProps<typeof Anchor> & { indicator?: boolean };
 
 const Anchor = styled('a', {
   color: '$text1',
-  textDecoration: 'underline',
+  display: 'block',
+  textDecoration: 'none',
 });
 
 const Indicator = styled(Icon, {
   verticalAlign: 'middle',
 });
 
-export const ExternalLink: React.FC<TProps> = ({ children, ...props }) => (
-  <Anchor target="_blank" {...props}>
+export const ExternalLink: React.FC<TProps> = ({
+  children,
+  indicator,
+  ...props
+}) => (
+  <Anchor target="_blank" rel="noopener" {...props}>
     {children}
-    <Indicator icon="lucide:arrow-up-right" />
+    {indicator && <Indicator icon="lucide:arrow-up-right" />}
   </Anchor>
 );

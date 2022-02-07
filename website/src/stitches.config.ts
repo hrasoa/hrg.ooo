@@ -22,37 +22,49 @@ export const {
       'brand-h': '154',
       'brand-s': '88%',
       'brand-l': '67%',
-      'brand-h-dark': '65',
-      'brand-s-dark': '30%',
-      'brand-l-dark': '7%',
+      'brand-h-dark': '244',
+      'brand-s-dark': '26%',
+      'brand-l-dark': '21%',
       //
       'secondary-h': '47',
       'secondary-s': '100%',
       'secondary-l': '94%',
-      'secondary-h-dark': '93',
-      'secondary-s-dark': '56%',
-      'secondary-l-dark': '24%',
+      'secondary-h-dark': '290',
+      'secondary-s-dark': '21%',
+      'secondary-l-dark': '27%',
       // Light
+      'accent-light': 'hsl($accent-h, $accent-s, $accent-l)',
+      'border1-light': 'hsl($brand-h, calc($brand-s / 2.5), 74%)',
       'brand-light': 'hsl($brand-h, $brand-s, $brand-l)',
+      'glass1-light': 'hsla($brand-h, calc($brand-s / 2), 80%, .1)',
+      'glass1-light-hover': 'hsla($brand-h, $brand-s, 40%, .1)',
       'secondary-light': 'hsl($secondary-h, $secondary-s, $secondary-l)',
       'text1-light': 'hsl($brand-h, $brand-s, 10%)',
       'text2-light': 'hsl($brand-h, 30%, 30%)',
       // Dark
-      'secondary-dark': 'hsl($brand-h-dark, $brand-s-dark, $brand-l-dark)',
+      'accent-dark': 'hsl(354, 54%, 71%)',
+      'border1-dark': 'hsl($brand-h-dark, $brand-s-dark, 40%)',
       'brand-dark':
         'hsl($secondary-h-dark, $secondary-s-dark, $secondary-l-dark)',
+      'glass1-dark': 'hsla($brand-h-dark, $brand-s-dark, 40%, .1)',
+      'glass1-dark-hover': 'hsla($brand-h-dark, $brand-s-dark, 52%, .1)',
+      'secondary-dark': 'hsl($brand-h-dark, $brand-s-dark, $brand-l-dark)',
       'text1-dark': 'hsl($brand-h-dark, 15%, 85%)',
       'text2-dark': 'hsl($brand-h-dark, 5%, 75%)',
       // Assign
-      accent: 'hsl($accent-h, $accent-s, $accent-l)',
+      accent: '$accent-light',
+      border1: '$border1-light',
       brand: '$brand-light',
+      glass1: '$glass1-light',
+      glass1Hover: '$glass1-light-hover',
       secondary: '$secondary-light',
       text1: '$text1-light',
       text2: '$text2-light',
     },
     fonts: {
-      body: "'Merriweather', serif",
-      heading: "'Vollkorn', serif",
+      body: "'Merriweather',-apple-system,Arial,BlinkMacSystemFont,roboto slab,droid serif,segoe ui,Ubuntu,Cantarell,Georgia,serif",
+      heading:
+        "'Vollkorn',-apple-system,Arial,BlinkMacSystemFont,roboto slab,droid serif,segoe ui,Ubuntu,Cantarell,Georgia,serif",
     },
     fontSizes: {
       largeTitle: '3em',
@@ -112,6 +124,9 @@ export const {
       '192x': '192px',
     },
   },
+  media: {
+    tablet: '(min-width: 768px)',
+  },
 });
 
 export const globalStyles = globalCss({
@@ -122,8 +137,15 @@ export const globalStyles = globalCss({
     fontSize: '$body',
     lineHeight: '$body',
   },
+  '*::selection': {
+    color: '$secondary-light',
+    backgroundColor: '$accent',
+  },
   ':root[data-color-scheme="dark"]': {
     $colors$brand: '$colors$brand-dark',
+    $colors$border1: '$colors$border1-dark',
+    $colors$glass1: '$colors$glass1-dark',
+    $colors$glass1Hover: '$colors$glass1-dark-hover',
     $colors$secondary: '$colors$secondary-dark',
     $colors$text1: '$colors$text1-dark',
     $colors$text2: '$colors$text2-dark',
@@ -131,6 +153,9 @@ export const globalStyles = globalCss({
   '@media (prefers-color-scheme: dark)': {
     ':root[data-color-scheme="auto"]': {
       $colors$brand: '$colors$brand-dark',
+      $colors$border1: '$colors$border1-dark',
+      $colors$glass1: '$colors$glass1-dark',
+      $colors$glass1Hover: '$colors$glass1-dark-hover',
       $colors$secondary: '$colors$secondary-dark',
       $colors$text1: '$colors$text1-dark',
       $colors$text2: '$colors$text2-dark',

@@ -1,5 +1,8 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "api/server" }],
+  "rewrites": [
+    { "source": "/robots.txt", "destination": "/public/robots.txt" },
+    { "source": "/(.*)", "destination": "api/server" }
+  ],
   "functions": {
     "api/server.js": {
       "maxDuration": 5

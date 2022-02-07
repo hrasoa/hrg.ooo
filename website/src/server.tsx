@@ -73,12 +73,13 @@ app.get('/*', (req, res) => {
           <link rel="preconnect" href="https://fonts.googleapis.com">
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-          <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Vollkorn&display=swap" rel="stylesheet">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital@0;1&family=Vollkorn&display=swap" rel="stylesheet">
           ${helmet?.title?.toString()}
           ${helmet?.meta?.toString()}
           ${helmet?.link?.toString()}
           <style>${[atlasGetCssText(), getCssText()].join('')}</style>
+          <meta name="description" content="Haja Rasoahaingo personal page.">
       </head>
       <body>
           <div id="root">${markup}</div>
