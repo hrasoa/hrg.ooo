@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "outDir": "output",
+    "module": "esnext",
+    "noEmit": true,
+    "target": "es2017",
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "allowJs": true,
+    "jsx": "react-jsxdev",
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "resolveJsonModule": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "typeRoots": ["node_modules/@types", "types"],
+    "paths": {
+      "@celeste-ui/atlas/*": ["packages/atlas/src/*"],
+      "@celeste-ui/hades/*": ["packages/hades/src/*"],
+      "hrg-ooo/*": ["website/src/*"],
+    }
+  },
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*/build"]
+}
