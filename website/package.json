@@ -7,7 +7,7 @@
     "dev": "hades dev",
     "icons": "node ./scripts/icons.js",
     "prod": "vercel --prod",
-    "staging": "vercel"
+    "stage": "vercel"
   },
   "dependencies": {
     "@celeste-ui/atlas": "workspace:*",
