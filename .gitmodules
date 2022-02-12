@@ -1,6 +1,8 @@
 [submodule "packages/atlas"]
 	path = packages/atlas
 	url = git@github.com:hrasoa/atlas.git
+  branch = master
 [submodule "packages/hades"]
 	path = packages/hades
 	url = git@github.com:hrasoa/hades.git
+  branch = master
