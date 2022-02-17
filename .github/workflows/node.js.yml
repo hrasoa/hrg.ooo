@@ -44,5 +44,7 @@ jobs:
         mkdir .vercel &&
         echo "{\"projectId\":\"$VERCEL_PROJECT_ID\",\"orgId\":\"$VERCEL_ORG_ID\"}" > .vercel/project.json &&
         echo CLIENT_PUBLIC_PATH=/ > .env &&         
-        pnpm build
+        pnpm build &&
+        pnpm run vercel -t "$VERCEL_TOKEN" &&
+        pnpm prod
         
