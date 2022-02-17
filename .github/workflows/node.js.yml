@@ -31,7 +31,7 @@ jobs:
       with:
         version: 6.0.2
         run_install: true
-    - name: Init project
+    - name: Build app
       shell: bash
       working-directory: website
       env:
@@ -41,7 +41,8 @@ jobs:
       run: |
         mkdir .vercel &&
         echo "{\"projectId\":\"$VERCEL_PROJECT_ID\",\"orgId\":\"$VERCEL_ORG_ID\"}" > .vercel/project.json &&
-        pnpm vercel --token $VERCEL_TOKEN &&
+        echo CLIENT_PUBLIC_PATH=/ > .env &&
+        pnpm vercel -t $VERCEL_TOKEN &&
         pnpm build &&
         pnpm --prod
         
