@@ -42,7 +42,7 @@ jobs:
         mkdir .vercel &&
         echo "{\"projectId\":\"$VERCEL_PROJECT_ID\",\"orgId\":\"$VERCEL_ORG_ID\"}" > .vercel/project.json &&
         echo CLIENT_PUBLIC_PATH=/ > .env &&
-        ./node_modules/.bin/vercel -t $VERCEL_TOKEN &&
+        ./node_modules/.bin/vercel -t "$VERCEL_TOKEN" &&
         pnpm build &&
         pnpm prod
         
