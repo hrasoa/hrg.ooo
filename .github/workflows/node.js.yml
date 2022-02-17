@@ -45,6 +45,5 @@ jobs:
         pnpm build && 
         mkdir .vercel &&
         echo "{\"projectId\":\"$VERCEL_PROJECT_ID\",\"orgId\":\"$VERCEL_ORG_ID\"}" > .vercel/project.json &&
-        ./node_modules/.bin/vercel -t "$VERCEL_TOKEN" &&
-        ./node_modules/.bin/vercel --prod
+        ./node_modules/.bin/vercel -t "$VERCEL_TOKEN" --prod
         
