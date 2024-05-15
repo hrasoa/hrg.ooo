@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Haja Rasoahaingo</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+        background-color: rgb(46, 0, 44);
+      }
+
+      a {
+        color: rgb(146, 130, 160);
+      }
+
+      body {
+        font-family: "Roboto Mono", monospace;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+        margin: 0;
+        color: black;
+        overflow: hidden;
+      }
+
+      ::selection {
+        background-color: rgb(146, 130, 160);
+        color: rgb(46, 0, 44);
+      }
+
+      main {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      h1 {
+        font-weight: normal;
+        font-size: 1.7rem;
+      }
+
+      h2 {
+        font-weight: normal;
+        font-size: 1rem;
+        margin-top: 4px;
+      }
+
+      button {
+        padding: 0;
+        background: none;
+        border: none;
+        color: inherit;
+        font: inherit;
+        text-decoration: underline;
+      }
+
+      .main {
+        display: flex;
+        align-items: center;
+        height: 512px;
+        width: 520px;
+        max-width: 100%;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          transparent 2px,
+          rgb(153, 125, 152) 2px,
+          rgb(68, 42, 42) 4px
+        );
+        background-size: 100% 4px;
+        justify-content: center;
+        animation: tilt 1s infinite linear;
+        background-color: rgb(46, 0, 44);
+        box-shadow: inset 0 0 20px 25px rgb(46, 0, 44);
+        border-radius: 380px;
+        overflow: hidden;
+      }
+
+      .content {
+        padding: 0 44px;
+        text-align: center;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        transition: opacity 0.2s;
+        filter: drop-shadow(3px 0px 2px rgb(166, 116, 63));
+      }
+
+      .contents {
+        height: 100%;
+        color: rgb(146, 130, 160);
+        mix-blend-mode: color-dodge;
+        transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+      }
+
+      .links {
+        display: flex;
+        justify-content: center;
+        color: black;
+        gap: 18px;
+      }
+
+      .links svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .container {
+        overflow: hidden;
+        position: relative;
+      }
+
+      .container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgb(46, 0, 44) 20%,
+          transparent 40%,
+          transparent 60%,
+          rgb(46, 0, 44) 80%
+        );
+        display: block;
+        pointer-events: none;
+      }
+
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      label {
+        font-size: 0.8rem;
+        text-decoration: underline;
+        display: block;
+      }
+
+      label:not(:first-child) {
+        margin-top: 16px;
+      }
+
+      .stacks {
+        margin-top: 12px;
+      }
+
+      .stacks li {
+        margin-top: 4px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      #stack:checked ~ .contents {
+        transform: translate(0, -100%);
+      }
+      #stack:checked ~ .contents #content-stack {
+        opacity: 1;
+      }
+      #stack:not(:checked) ~ .contents #content-stack {
+        opacity: 0;
+      }
+      #content-stack {
+        text-align: left;
+      }
+
+      #me:checked ~ .contents {
+        transform: translate(0, 0);
+      }
+      #me:checked ~ .contents #content-me {
+        opacity: 1;
+      }
+      #me:not(:checked) ~ .contents #content-me {
+        opacity: 0;
+      }
+
+      @media screen and (min-width: 520px) {
+        h1 {
+          font-size: 2rem;
+        }
+        .container {
+          transform: matrix3d(
+            1,
+            0,
+            0.2,
+            0.003,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          );
+        }
+
+        .content {
+          text-align: left;
+        }
+
+        .main {
+          border-radius: 380px;
+          box-shadow: inset 0 0 20px 55px rgb(46, 0, 44);
+        }
+
+        .container::after {
+          background: radial-gradient(
+            circle,
+            transparent 0%,
+            transparent 50%,
+            rgb(46, 0, 44) 60%
+          );
+        }
+
+        .links {
+          justify-content: flex-start;
+          gap: 6px;
+        }
+
+        .links svg {
+          width: 12px;
+          height: 12px;
+        }
+      }
+
+      @keyframes tilt {
+        0% {
+          background-position: 0 0;
+        }
+
+        100% {
+          background-position: 100% 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="main">
+          <input
+            class="visually-hidden"
+            type="radio"
+            id="me"
+            name="content"
+            tabindex="-1"
+            checked
+          />
+          <input
+            class="visually-hidden"
+            type="radio"
+            id="stack"
+            name="content"
+            tabindex="-1"
+          />
+          <div class="contents">
+            <div id="content-me" class="content">
+              <div>
+                <div class="links">
+                  <a href="https://twitter.com/hrgooo" target="_blank">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M9.294 6.928L14.357 1h-1.2L8.762 6.147L5.25 1H1.2l5.31 7.784L1.2 15h1.2l4.642-5.436L10.751 15h4.05zM7.651 8.852l-.538-.775L2.832 1.91h1.843l3.454 4.977l.538.775l4.491 6.47h-1.843z"
+                      />
+                    </svg>
+                  </a>
+                  <a href="https://github.com/hrasoa" target="_blank">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/haja-rasoahaingo-83879642/"
+                    target="_blank"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M6.94 5a2 2 0 1 1-4-.002a2 2 0 0 1 4 .002M7 8.48H3V21h4zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+                <h1>Haja Rasoahaingo</h1>
+                <h2>Sr. Front-End Engineer</h2>
+                <label for="stack">
+                  <button
+                    type="button"
+                    onclick="document.querySelector('#stack').click()"
+                  >
+                    Favourite stack
+                  </button>
+                </label>
+              </div>
+            </div>
+            <div id="content-stack" class="content" inert>
+              <div>
+                <label for="me">
+                  <button
+                    type="button"
+                    onclick="document.querySelector('#me').click()"
+                  >
+                    /
+                  </button>
+                </label>
+                <ul class="stacks">
+                  <li>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75q.918 0 1.627.111a6.4 6.4 0 0 1 1.306.34v2.458a4 4 0 0 0-.643-.361a5 5 0 0 0-.717-.26a5.5 5.5 0 0 0-1.426-.2q-.45 0-.819.086a2.1 2.1 0 0 0-.623.242q-.254.156-.393.374a.9.9 0 0 0-.14.49q0 .294.156.529q.156.234.443.444c.287.21.423.276.696.41q.41.203.926.416q.705.296 1.266.628q.561.333.963.753q.402.418.614.957q.213.538.214 1.253q0 .986-.373 1.656a3 3 0 0 1-1.012 1.085a4.4 4.4 0 0 1-1.487.596q-.85.18-1.79.18a10 10 0 0 1-1.84-.164a5.5 5.5 0 0 1-1.512-.493v-2.63a5.03 5.03 0 0 0 3.237 1.2q.5 0 .872-.09q.373-.09.623-.25q.249-.162.373-.38a1.02 1.02 0 0 0-.074-1.089a2.1 2.1 0 0 0-.537-.5a5.6 5.6 0 0 0-.807-.444a28 28 0 0 0-1.007-.436q-1.377-.575-2.053-1.405t-.676-2.005q0-.92.369-1.582q.368-.662 1.004-1.089a4.5 4.5 0 0 1 1.47-.629a7.5 7.5 0 0 1 1.77-.201m-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"
+                      />
+                    </svg>
+                    Typescript
+                  </li>
+                  <li>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M14.448 16.24a21.883 21.883 0 0 1-1.747 2.175c1.673 1.623 3.228 2.383 4.091 1.884c.863-.498.982-2.225.413-4.484c-.853.19-1.779.334-2.757.424m-1.31.087a27.48 27.48 0 0 1-2.275 0c.376.492.758.948 1.137 1.363c.38-.415.761-.871 1.138-1.364m5.04-7.894c2.665.764 4.406 2.034 4.406 3.567c0 1.533-1.74 2.803-4.405 3.567c.67 2.69.44 4.832-.887 5.598c-1.327.767-3.297-.105-5.292-2.031c-1.994 1.925-3.964 2.798-5.291 2.031c-1.328-.766-1.557-2.908-.887-5.598c-2.665-.764-4.405-2.034-4.405-3.567c0-1.533 1.74-2.803 4.405-3.567c-.67-2.69-.44-4.832.887-5.599c1.327-.766 3.297.106 5.291 2.032c1.995-1.926 3.965-2.798 5.292-2.032c1.327.767 1.557 2.909.887 5.599m-.973-.248c.57-2.26.45-3.986-.413-4.485c-.863-.498-2.418.262-4.09 1.885a21.932 21.932 0 0 1 1.746 2.175c.978.09 1.904.234 2.757.425m-10.41 7.63c-.569 2.26-.45 3.986.414 4.484c.863.498 2.418-.261 4.09-1.884a21.866 21.866 0 0 1-1.746-2.176a21.883 21.883 0 0 1-2.757-.425m4.068-8.142a27.507 27.507 0 0 1 2.275 0A20.537 20.537 0 0 0 12 6.31c-.38.416-.76.872-1.137 1.364m-1.31.087a21.865 21.865 0 0 1 1.746-2.175C9.627 3.962 8.072 3.202 7.21 3.7c-.863.499-.983 2.226-.413 4.485c.853-.19 1.779-.334 2.757-.425m4.34 7.52A25.373 25.373 0 0 0 15.788 12a25.363 25.363 0 0 0-1.893-3.28a25.37 25.37 0 0 0-3.787 0A25.368 25.368 0 0 0 8.213 12a25.39 25.39 0 0 0 1.894 3.28a25.398 25.398 0 0 0 3.787 0m1.285-.132c.615-.08 1.2-.182 1.75-.303a20.512 20.512 0 0 0-.612-1.667a27.546 27.546 0 0 1-1.137 1.97M8.823 8.851c-.615.08-1.2.183-1.75.304c.17.536.375 1.094.613 1.667a27.518 27.518 0 0 1 1.137-1.97m-1.75 5.994c.55.121 1.135.223 1.75.303a27.528 27.528 0 0 1-1.137-1.97a20.51 20.51 0 0 0-.613 1.667m-.978-.245c.262-.834.6-1.708 1.01-2.6a21.88 21.88 0 0 1-1.01-2.6c-2.241.636-3.677 1.604-3.677 2.6s1.436 1.963 3.677 2.6M16.93 9.155a20.479 20.479 0 0 0-1.75-.304a27.541 27.541 0 0 1 1.137 1.97c.238-.572.442-1.13.613-1.666m.977.245c-.26.834-.6 1.708-1.01 2.6c.41.892.75 1.766 1.01 2.6c2.242-.637 3.678-1.604 3.678-2.6s-1.436-1.963-3.678-2.6M12 13.879a1.88 1.88 0 1 1 0-3.758a1.88 1.88 0 0 1 0 3.758"
+                      />
+                    </svg>
+                    Reactjs
+                  </li>
+                  <li>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 600 600"
+                    >
+                      <g fill="currentColor">
+                        <path
+                          d="M142.536 198.858c0 26.36-21.368 47.72-47.72 47.72-26.36 0-47.722-21.36-47.722-47.72s21.36-47.72 47.72-47.72c26.355 0 47.722 21.36 47.722 47.72"
+                        />
+                        <path
+                          d="M505.18 414.225H238.124c-35.25 0-63.926-28.674-63.926-63.923s28.678-63.926 63.926-63.926h120.78c20.816 0 37.753-16.938 37.753-37.756s-16.938-37.756-37.753-37.756H94.81c-7.227 0-13.086-5.86-13.086-13.085 0-7.227 5.86-13.086 13.085-13.086h264.093c35.25 0 63.923 28.678 63.923 63.926s-28.674 63.923-63.923 63.923h-120.78c-20.82 0-37.756 16.938-37.756 37.76 0 20.816 16.938 37.753 37.756 37.753H505.18c7.227 0 13.086 5.86 13.086 13.085 0 7.226-5.858 13.085-13.085 13.085z"
+                        />
+                        <path
+                          d="M457.464 401.142c0-26.36 21.36-47.72 47.72-47.72s47.72 21.36 47.72 47.72-21.36 47.72-47.72 47.72-47.72-21.36-47.72-47.72"
+                        />
+                      </g>
+                    </svg>
+                    Relayjs
+                  </li>
+                  <li>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="m12 5.37l-.44-.06L6 14.9c.24.21.4.48.47.78h11.06c.07-.3.23-.57.47-.78l-5.56-9.59zM6.6 16.53l4.28 2.53c.29-.27.69-.43 1.12-.43s.83.16 1.12.43l4.28-2.53zM12 22a1.68 1.68 0 0 1-1.68-1.68l.09-.56l-4.3-2.55c-.31.36-.76.58-1.27.58a1.68 1.68 0 0 1-1.68-1.68c0-.79.53-1.45 1.26-1.64V9.36c-.83-.11-1.47-.82-1.47-1.68A1.68 1.68 0 0 1 4.63 6c.55 0 1.03.26 1.34.66l4.41-2.53l-.06-.45c0-.93.75-1.68 1.68-1.68s1.68.75 1.68 1.68l-.06.45l4.41 2.53c.31-.4.79-.66 1.34-.66a1.68 1.68 0 0 1 1.68 1.68c0 .86-.64 1.57-1.47 1.68v5.11c.73.19 1.26.85 1.26 1.64a1.68 1.68 0 0 1-1.68 1.68c-.51 0-.96-.22-1.27-.58l-4.3 2.55l.09.56A1.68 1.68 0 0 1 12 22M10.8 4.86L6.3 7.44l.02.24c0 .71-.44 1.32-1.06 1.57l.03 5.25zm2.4 0l5.51 9.64l.03-5.25c-.62-.25-1.06-.86-1.06-1.57l.02-.24z"
+                      />
+                    </svg>
+                    GraphQL
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script>
+    (function () {
+      const stack = document.querySelector("#stack");
+      const stackContent = document.querySelector("#content-stack");
+      const me = document.querySelector("#me");
+      const meContent = document.querySelector("#content-me");
+
+      stack.addEventListener("change", () => {
+        if (stack.checked) {
+          meContent.setAttribute("inert", "");
+          stackContent.removeAttribute("inert");
+        }
+      });
+
+      me.addEventListener("change", () => {
+        if (me.checked) {
+          meContent.removeAttribute("inert");
+          stackContent.setAttribute("inert", "");
+        }
+      });
+    })();
+  </script>
+</html>
